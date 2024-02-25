@@ -120,7 +120,13 @@ app.put("/updaterecord", async (req, res) => {
         console.log(id);
         const updatedRecord = await Record.findByIdAndUpdate(
             { _id: id }, // Filter condition
-            data, // Data to update
+            {
+                balance: data.balance,
+                collected: data.collected,
+                distributed: data.distributed,
+                prevBal: data.prevBal,
+                total: data.total
+            }, // Data to update
             { new: true } // To return the updated document
         );
         // Record.findByIdAndUpdate({"_id":id},data).then(()=>{
