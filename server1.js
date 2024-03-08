@@ -42,6 +42,25 @@ app.get("/customer", async(req,res)=>{
     }
 })
 
+app.put("/updateCustomer", async(req,res)=>{
+    const data = req.body;
+    try {
+        const updateCustomer = await findByIdAndUpdate(
+            {_id: data.id},
+            {
+                name: data.customer.name,
+                address: data.customer.address,
+                phone: data.customer.phone
+            },
+            { new: true } 
+        )
+        res.status(200).json(updateCustomer)
+    } catch (error) {
+        res.status(404).json(error);
+
+    }
+})
+
 app.get("/records", async(req,res)=>{
     const customers = await Customers.find();
     const records = [];
