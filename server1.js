@@ -46,6 +46,7 @@ app.get("/customer", async(req,res)=>{
 
 app.put("/updateCustomer", async(req,res)=>{
     const data = req.body;
+    console.log(data);
     try {
         const updateCustomer = await findByIdAndUpdate(
             {_id: data.id},
