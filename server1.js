@@ -45,15 +45,15 @@ app.get("/customer", async(req,res)=>{
 })
 
 app.put("/updateCustomer", async(req,res)=>{
-    const data = req.body;
+    const {id,customer} = req.body;
     console.log(data);
     try {
         const updateCustomer = await findByIdAndUpdate(
-            {_id: data.id},
+            {_id: id},
             {
-                name: data.customer.name,
-                address: data.customer.address,
-                phone: data.customer.phone
+                name: customer.name,
+                address: customer.address,
+                phone: customer.phone
             },
             { new: true } 
         )
