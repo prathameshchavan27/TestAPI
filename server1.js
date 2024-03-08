@@ -19,11 +19,13 @@ function getFormattedDate(date){
 }
 
 app.post("/customer", async(req,res)=>{
-    const {name} = req.body;
+    const {name,address,phone} = req.body;
     const customers = await Customers.find();
     const customer = new Customers({
         userId: customers.length+1,
         name: name,
+        address: address,
+        phone: phone
     });
     try {
         const saveCustomer = await customer.save();
