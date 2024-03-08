@@ -44,6 +44,17 @@ app.get("/customer", async(req,res)=>{
     }
 })
 
+app.delete("/deleteCustomer",async(req,res)=>{
+    const {id} = req.body
+    try {
+        const customer = await Customers.findById(id);
+        await customer.deleteOne();
+        res.status(200).json("Customer Deleted!");
+    } catch (error) {
+        res.status(400).json("Could not delete customer");
+    }
+})
+
 app.put("/updateCustomer", async(req,res)=>{
     const {id,customer} = req.body;
     try {
