@@ -8,6 +8,14 @@ const customerSchema = mongoose.Schema({
         type:String,
         require: true
     },
+    address:{
+        type:String,
+        require: true
+    },
+    phone:{
+        type:Number,
+        require: true
+    }
 },{timestamp:true});
 
 module.exports = mongoose.model("Customers",customerSchema)
