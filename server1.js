@@ -47,7 +47,7 @@ app.get("/customer", async(req,res)=>{
 app.put("/updateCustomer", async(req,res)=>{
     const {id,customer} = req.body;
     try {
-        const updateCustomer = await findByIdAndUpdate(
+        const updateCustomer = await Customers.findByIdAndUpdate(
             {_id: id},
             {
                 name: customer.name,
